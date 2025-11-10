@@ -8,10 +8,10 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'usetypo3@posteo.de',
     'state' => 'stable',
     'author_company' => '',
-    'version' => '3.1.0',
+    'version' => '4.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.0.0-13.4.99',
+            'typo3' => '13.4.0-13.4.99',
             'fluid_styled_content' => ''
         ],
         'conflicts' => [],
