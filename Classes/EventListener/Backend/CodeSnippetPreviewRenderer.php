@@ -20,7 +20,8 @@ class CodeSnippetPreviewRenderer
 
     public function __invoke(PageContentPreviewRenderingEvent $event): void
     {
-        if ($event->getRecord()->get('CType') !== 'fs_code_snippet') {
+        $record = $event->getRecord();
+        if (isset($record['CType']) && $record['CType'] !== 'fs_code_snippet') {
             return;
         }
         $this->preProcess($event);
@@ -34,11 +35,11 @@ class CodeSnippetPreviewRenderer
     {
         $record = $event->getRecord();
         //string cast to to safely handle null values
-        $language =(string)$record->get('programming_language');
+        $language = (string)$record->get('programming_language');
         $code = (string)$record->get('bodytext');
 
         $itemContent = '<strong>' . $this->getProgrammingLanguageLabel($language) . ':</strong><br />' .
-            '<pre><code>' . $this->prepareCodeSnippet($code). '</code></pre>';
+            '<pre><code>' . $this->prepareCodeSnippet($code) . '</code></pre>';
 
         $event->setPreviewContent($itemContent);
     }
